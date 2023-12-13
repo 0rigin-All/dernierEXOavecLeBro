@@ -1,15 +1,25 @@
 async function noParam(req, res) {
-    res.send("Site de calcul")
+    res.render('setup')
 }
-
+const sendSetup = (req, res)=>{
+    const {numberOfNumbers,maxValue} = req.body
+   
+    let max = maxValue
+    let nbOfNb = numberOfNumbers
+    res.redirect(`/jeu/?max=${max}&nbOfNb=${nbOfNb}`)
+}
 const startGame = (req, res)=>{
-    let timer = 10; 
-    const tab = [12,34,56,87,12,54]
+    const { max, nbOfNb}= req.query 
+    let tab = [];
+    for(let k = 0; k<nbOfNb; k++){
+        tab.push(Math.floor(Math.random() * (max + 1)));
+    }
+    console.log(tab)
     res.render('startGame', {tab, timer})
 }
 const timer = (req, res) => {
-    let timer = 10;
-
+    
+let timer = 30
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
@@ -28,4 +38,4 @@ const timer = (req, res) => {
 }
 
 
-module.exports = { noParam, startGame, timer }
+module.exports = { noParam, startGame, timer, sendSetup }
