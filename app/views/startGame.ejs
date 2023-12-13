@@ -1,7 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Addition de nombres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #timerDisplay {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Addition de nombres</h1>
@@ -16,7 +70,7 @@
             <p>Aucun nombre à additionner.</p>
         <% } %>
     </form>
-    <h3>Timer</h3>
+
     <div id="timerDisplay">Loading...</div>
 
     <script>
