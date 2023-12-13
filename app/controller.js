@@ -43,7 +43,6 @@ const calculate = (req, res) => {
     const userInput = req.body.result;
     const tabJSON = req.body.tab;
 
-<<<<<<< HEAD
     const tab = JSON.parse(tabJSON);
 
     // console.log(userInput);
@@ -58,6 +57,3 @@ const calculate = (req, res) => {
 
 
 module.exports = { noParam, startGame, timer, calculate }
-=======
-module.exports = { noParam, startGame, timer, sendSetup }
->>>>>>> ae7e2fea31e8fdb89da43d8f889c463f41601226
