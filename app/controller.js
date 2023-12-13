@@ -56,4 +56,4 @@ const calculate = (req, res) => {
 
 
 
-module.exports = { noParam, startGame, timer, calculate }
+module.exports = { noParam, startGame, timer, calculate, sendSetup }
