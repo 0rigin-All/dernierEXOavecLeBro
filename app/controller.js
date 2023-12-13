@@ -1,3 +1,5 @@
+const { verifier } = require("./src/Utilitaire")
+
 async function noParam(req, res) {
     res.render('setup')
 }
@@ -37,5 +39,21 @@ let timer = 30
     }, 1000);
 }
 
+const calculate = (req, res) => {
+    const userInput = req.body.result;
+    const tabJSON = req.body.tab;
 
-module.exports = { noParam, startGame, timer, sendSetup }
+    const tab = JSON.parse(tabJSON);
+
+    // console.log(userInput);
+    // console.log(tab);
+    const result = verifier(userInput, tab)
+
+   
+
+    res.render('result', {result});
+};
+
+
+
+module.exports = { noParam, startGame, timer, calculate }

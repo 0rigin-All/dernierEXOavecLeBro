@@ -62,12 +62,13 @@
 
     <form action="/calculate" method="post">
         <% if(tab && tab.length > 0) { %>
-            <p>Voici les nombres à additionner : <%= tab.join(', ') %></p>
-            <label for="result">Entrez le résultat :</label>
-            <input type="text" id="result" name="result" required>
-            <button type="submit">Vérifier</button>
+          <p>Voici les nombres à additionner : <%= tab.join(', ') %></p>
+          <input type="hidden" name="tab" value="<%= JSON.stringify(tab) %>">
+          <label for="result">Entrez le résultat :</label>
+          <input type="text" id="result" name="result" required>
+          <button type="submit">Vérifier</button>
         <% } else { %>
-            <p>Aucun nombre à additionner.</p>
+          <p>Aucun nombre à additionner.</p>
         <% } %>
     </form>
 
@@ -79,7 +80,6 @@
         eventSource.onmessage = function(event) {
             document.getElementById('timerDisplay').innerText = event.data;
         };
-    </script>
-    
+    </script> 
 </body>
 </html>
