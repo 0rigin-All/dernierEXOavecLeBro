@@ -1,17 +1,27 @@
 const { verifier } = require("./src/Utilitaire")
 
 async function noParam(req, res) {
-    res.send("Site de calcul")
+    res.render('setup')
 }
-
+const sendSetup = (req, res)=>{
+    const {numberOfNumbers,maxValue} = req.body
+   
+    let max = maxValue
+    let nbOfNb = numberOfNumbers
+    res.redirect(`/jeu/?max=${max}&nbOfNb=${nbOfNb}`)
+}
 const startGame = (req, res)=>{
-    let timer = 10; 
-    const tab = [12,34,56,87,12,54]
+    const { max, nbOfNb}= req.query 
+    let tab = [];
+    for(let k = 0; k<nbOfNb; k++){
+        tab.push(Math.floor(Math.random() * (parseInt(max) + 1)));
+    }
+    console.log(max)
     res.render('startGame', {tab, timer})
 }
 const timer = (req, res) => {
-    let timer = 10;
-
+    
+let timer = 30
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
@@ -33,6 +43,7 @@ const calculate = (req, res) => {
     const userInput = req.body.result;
     const tabJSON = req.body.tab;
 
+<<<<<<< HEAD
     const tab = JSON.parse(tabJSON);
 
     // console.log(userInput);
@@ -47,3 +58,6 @@ const calculate = (req, res) => {
 
 
 module.exports = { noParam, startGame, timer, calculate }
+=======
+module.exports = { noParam, startGame, timer, sendSetup }
+>>>>>>> ae7e2fea31e8fdb89da43d8f889c463f41601226
