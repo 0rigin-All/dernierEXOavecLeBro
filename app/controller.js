@@ -12,9 +12,9 @@ const startGame = (req, res)=>{
     const { max, nbOfNb}= req.query 
     let tab = [];
     for(let k = 0; k<nbOfNb; k++){
-        tab.push(Math.floor(Math.random() * (max + 1)));
+        tab.push(Math.floor(Math.random() * (parseInt(max) + 1)));
     }
-    console.log(tab)
+    console.log(max)
     res.render('startGame', {tab, timer})
 }
 const timer = (req, res) => {
