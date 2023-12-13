@@ -16,5 +16,16 @@
             <p>Aucun nombre à additionner.</p>
         <% } %>
     </form>
+    <h3>Timer</h3>
+    <div id="timerDisplay">Loading...</div>
+
+    <script>
+        const eventSource = new EventSource('/timer');
+    
+        eventSource.onmessage = function(event) {
+            document.getElementById('timerDisplay').innerText = event.data;
+        };
+    </script>
+    
 </body>
 </html>
